@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: background-image 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+/* Hacker Style Timer */
+.hacker-timer {
+  font-family: var(--font-mono);
+  color: #00ffcc;
+  text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+  letter-spacing: 1px;
+}
+
+/* Glassmorphism Sidebar */
+.glass-sidebar {
+  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* Neon Glow for Active Items */
+.active-glow {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border-left: 4px solid #00ffff !important;
+}
+
+/* Card Entry Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+/* Bell Shake Animation */
+@keyframes bellShake {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(-15deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0); }
+}
+
+.animate-bell-shake {
+  animation: bellShake 0.5s ease-in-out;
+}
+
+/* Progress Bar Pulse */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.progress-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Page Transition */
+.page-fade-enter {
+  opacity: 0;
+}
+.page-fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
