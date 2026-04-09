@@ -1,65 +1,338 @@
-# Daily Work Update - Hierarchical Task Management System
+# 🚀 Advanced Task Management & Workforce Optimization System
 
-A robust, full-stack task management application designed for structured organizational workflows, featuring a hierarchical role system, real-time tracking, and advanced reporting.
+## 📌 Overview
 
-**Developed by: Jahid Hasan (38250) RAC R&I**
+This is a **highly structured, role-based task management system** designed for industrial/team workflow optimization.
 
----
+The system ensures:
 
-## 🚀 Comprehensive Feature Guide (Step-by-Step)
-
-### 1. Secure Authentication & Role-Based Access
-*   **Step 1: Login**: Users log in using their unique Employee ID and password.
-*   **Step 2: Role Redirection**: The system automatically identifies the user's role (Super Admin, HOD, In-Charge, Officer, Engineer, or Technician) and redirects them to their specialized dashboard.
-*   **Step 3: Profile Management**: Users can view their profile details and current status (e.g., Technicians see if they are 'FREE' or 'WORKING').
-
-### 2. Hierarchical Task Lifecycle
-*   **Step 1: Task Creation (Officer/Admin)**: Officers or Admins create tasks, specifying the title, model, priority, and assigning it to an Engineer or Technician.
-*   **Step 2: Engineer Oversight**: Engineers receive tasks. They can view the task details and, if needed, assign them to a specific Technician for execution.
-*   **Step 3: Execution (Technician)**: Technicians move tasks from `PENDING` to `RUNNING`. They update the progress percentage (0-100%) in real-time.
-*   **Step 4: Completion**: Once finished, the Technician marks the task as `COMPLETED`. The system automatically records the completion timestamp and calculates the total time taken.
-*   **Step 5: Feedback (Officer Remarks)**: Officers can review completed tasks and add "Officer Remarks" for quality control and feedback.
-
-### 3. Advanced Reporting System
-*   **Step 1: Select Report Type**: Users (with appropriate permissions) can choose from "DAILY", "WEEKLY", "MONTHLY", or "CUSTOM" reports.
-*   **Step 2: Custom Range**: For "CUSTOM" reports, users can select a precise start and end date/time.
-*   **Step 3: Role-Based Data Visibility**:
-    *   **Engineer Reports**: Strictly hide Technician names for external reporting. Shows task details, assigned Officer, status, and time taken.
-    *   **Officer Reports**: Include mandatory Engineer and Technician names for internal accountability.
-    *   **Admin/HOD Reports**: Full visibility across all hierarchy levels.
-*   **Step 4: Export Formats**:
-    *   **PDF**: Generates a professional **Landscape** document with a standardized header and the mandatory footer: *"Software development by Jahid Hasan (38250) RAC R&I"*.
-    *   **Excel**: Exports a clean data sheet with all relevant columns and the same mandatory footer.
-
-### 4. Real-Time Monitoring & Dashboard
-*   **Step 1: Performance Metrics**: View live stats on Total Tasks, Active Tasks, Completed Tasks, and Team Efficiency.
-*   **Step 2: Visual Analytics**: Interactive Recharts display task distribution by priority and staff workload.
-*   **Step 3: Task Filtering**: Use the "ALL", "PENDING", "RUNNING", and "COMPLETED" tabs to quickly find specific tasks.
-*   **Step 4: Search & Sort**: Search tasks by ID, Title, or Model, and sort by priority or date.
-
-### 5. Staff & Team Management
-*   **Step 1: Staff Directory**: View a comprehensive list of all employees, their roles, and current work status.
-*   **Step 2: Live Status**: See at a glance which Technicians are currently occupied and which are available for new assignments.
-*   **Step 3: Team Hierarchy**: Admins can manage the relationships between Officers and their assigned Technicians.
-
-### 6. System Administration (Super Admin Only)
-*   **Step 1: Task Deletion**: Super Admins can delete tasks with a secure confirmation modal.
-*   **Step 2: User Management**: Add, edit, or remove staff members and reset passwords.
-*   **Step 3: Backup**: Export the entire system database (Users, Tasks, etc.) to a secure JSON file for off-site storage.
-*   **Step 4: Restore**: Instantly recover the system state from a previously saved backup file.
+* Strict hierarchy control
+* Real-time task monitoring
+* Performance tracking (Officer + Technician)
+* Time-based productivity measurement
+* Cross-team collaboration with approval flow
 
 ---
 
-## 🛠️ Tech Stack
--   **Frontend**: React 18+, TypeScript, Tailwind CSS, Lucide Icons, Framer Motion (Animations), Recharts (Analytics).
--   **Backend**: Node.js, Express (Custom Server).
--   **Reporting**: `jspdf`, `jspdf-autotable` (PDF Generation), `xlsx` (Excel Export).
--   **Authentication**: JWT (JSON Web Tokens) with Bcrypt password hashing.
--   **State Management**: React Hooks (useState, useEffect, useMemo).
+# 🧑‍💼 User Roles & Permissions
+
+## 1. Super Admin
+
+* Full system control
+* View all data (Tasks, Points, Performance)
+* Edit/Delete incorrect task points
+* Run **Data Sync (Recalculate Points)**
+* View real IP, Local IP, Device info
 
 ---
 
-## 📝 License & Attribution
-This project is developed for internal organizational use.
-**Software development by Jahid Hasan (38250) RAC R&I**
-Copyright © 2026 Daily Work Update.
+## 2. Engineer / HOD / Model Manager / In-Charge
+
+* Create tasks (NO technician assignment)
+* Select:
+
+  * Task Title
+  * Model
+  * Details
+  * Urgency
+  * Task Point (1–3)
+  * Deadline (DATE ONLY)
+* Assign to Officer
+* Can EDIT ONLY task point before approval
+
+---
+
+## 3. Officer
+
+* Cannot create task directly
+* Receives tasks from Engineer
+* Assigns task to Technician
+
+### Key Features:
+
+* Select Work Type:
+
+  * Single Work
+  * Team Work
+* Assign Technician via **Search (ID/Name only)**
+* Set task duration (minutes)
+* Live countdown system
+* Extend time (with reason)
+* View technician live performance
+
+---
+
+## 4. Technician
+
+* Execute assigned tasks
+* No task creation
+* No point system
+* Performance based on time efficiency
+
+---
+
+# 🔄 Task Flow (STRICT LOGIC)
+
+1. Engineer creates task
+2. Task goes to Officer Dashboard (Pending)
+3. Officer assigns:
+
+   * Technician
+   * Work Type
+   * Time (minutes)
+4. Task starts instantly
+5. Live countdown begins
+6. Technician completes task
+7. Engineer approves + sets point
+8. Point added to Officer profile
+
+---
+
+# ⏱️ Time Management System
+
+## Duty Time
+
+* 9:00 AM – 6:00 PM
+
+## Break Time (Excluded)
+
+* 10:00 – 10:15 (Snack)
+* 1:00 – 2:00 (Lunch)
+* Prayer Time Adjusted
+
+## Effective Work Time:
+
+👉 **440 minutes per day**
+
+---
+
+# 📊 Live Task Timer System
+
+* Task starts immediately after assignment
+* Countdown runs in seconds
+
+Example:
+30 min → 29:59 → 29:58
+
+## Progress Bar:
+
+* Green → Yellow → Red
+* Auto fills left → right
+
+## Time Extend:
+
+* Officer can extend
+* Must provide reason
+* Visible to all supervisors
+
+---
+
+# 📈 Performance System
+
+## Officer Performance
+
+* Based on:
+
+  * Completed Task Points
+* Monthly calculation
+* Custom date filter supported
+
+## Technician Performance
+
+* Based on:
+
+  * Time efficiency
+
+### Formula:
+
+* Base = 440 minutes
+* If less → % decrease
+* If more → bonus efficiency
+
+---
+
+# 🎯 Point System (CORE LOGIC)
+
+## Task Type:
+
+* Regular = 1 point
+* Urgent = 2 points
+* Most Urgent = 3 points
+
+## Rules:
+
+* Point set by Engineer ONLY
+* Officer cannot edit
+* Point added AFTER task completion + approval
+
+---
+
+# 🔁 Cross-Team Assignment System
+
+## Flow:
+
+1. Officer selects FREE technician (other team)
+2. Fills task + time
+3. Clicks **Request to Supervisor**
+4. Goes to Supervisor Panel
+
+## Supervisor:
+
+* Approve → Task starts
+* Reject → Must give reason
+
+---
+
+# 👥 Technician Management
+
+## Rules:
+
+* No duplicate technician
+* One technician = one state
+
+  * Free OR Working
+
+## Team Work:
+
+* Multiple technician assignment
+
+---
+
+# 🧾 Task Management Features
+
+## Filters:
+
+* All / Pending / Running / Completed
+* Model-wise
+* Deadline-wise
+* Task Type
+
+## Search:
+
+* Task name search
+
+## Table Features:
+
+* Scroll (Horizontal + Vertical)
+* Limit (100 / 500 / 1000)
+
+---
+
+# 📊 Analytics
+
+## Separate Ranking:
+
+* Officer → By Total Points
+* Technician → By Completed Task Count
+
+## Graph:
+
+* Full Name display
+* Hover → show full details
+
+---
+
+# 🔔 Notification System
+
+* Bell icon notification
+* New task alert
+* Cross-team request alert
+
+---
+
+# 🖥️ System Features
+
+## Themes
+
+* 7 built-in themes
+* Dark / Light
+* Custom background upload
+
+## Change Password
+
+* Available in all panels
+* Superadmin can override
+
+## Backup & Restore
+
+* Panel-wise backup
+* Full system backup
+
+## Data Sync (Superadmin)
+
+* Recalculate all points from DB
+* Fix missing data after restore
+
+---
+
+# 🌐 IP & Device Tracking
+
+## Shows:
+
+* Public IP
+* Local IP
+* Device Name
+
+---
+
+# ⚙️ Attendance System
+
+## Shift:
+
+* 6:00 AM – 2:00 PM
+* 2:00 PM – 10:00 PM
+
+## Status:
+
+* Present
+* Leave
+* Short Leave
+* Shift-based visibility
+
+---
+
+# 🚫 Strict Rules (System Integrity)
+
+* Officer cannot edit points
+* Engineer cannot assign technician
+* Technician cannot create task
+* Duplicate assignment not allowed
+* Task must have officer
+* Countdown must always run
+
+---
+
+# 🎯 Final Objective
+
+Build a **fully controlled, real-time, high-performance task system** where:
+
+* Work is always tracked
+* Time is optimized
+* Performance is measurable
+* Hierarchy is enforced
+
+---
+
+# 🧠 For AI Rebuild
+
+To recreate this system:
+
+1. Implement strict role-based access
+2. Build real-time task engine
+3. Use database-driven point calculation
+4. Add WebSocket or polling for live updates
+5. Ensure no frontend-only logic (backend validation required)
+6. Maintain normalized database (Tasks, Users, Assignments, Points)
+
+---
+
+# ✅ Status
+
+✔ Production-ready logic
+✔ Scalable architecture
+✔ Real-time capable
+✔ AI-rebuild compatible
+
+---
+
+🔥 This system is designed for **maximum workforce efficiency & zero idle time**.
