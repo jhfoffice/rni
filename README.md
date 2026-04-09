@@ -1,5 +1,7 @@
 # 🚀 Advanced Task Management & Workforce Optimization System
 
+Developper By Md. Jahid Hasan (RAC R&I-ID-38250) 
+
 ## 📌 Overview
 
 This is a **highly structured, role-based task management system** designed for industrial/team workflow optimization.
